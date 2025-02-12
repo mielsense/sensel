@@ -77,7 +77,7 @@ sensel add <item-name>
 
 ## 📝 License
 
-Licensed under the [MIT License](LICENSE.md).
+Licensed under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
