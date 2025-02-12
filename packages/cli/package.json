@@ -1,0 +1,20 @@
+{
+    "name": "@sensel/cli",
+    "author": {
+        "name": "miel"
+    },
+    "version": "0.0.3",
+    "description": "A CLI to initialize projects. Add/Remove components and actions and much more !",
+    "bin": {
+        "sensel": "cli.js"
+    },
+    "dependencies": {
+        "chalk": "^5.4.1",
+        "commander": "^13.1.0",
+        "fs-extra": "^11.3.0",
+        "inquirer": "^12.4.1",
+        "ora": "^8.2.0",
+        "path": "^0.12.7"
+    },
+    "type": "module"
+}

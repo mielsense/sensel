@@ -1,0 +1,10 @@
+{
+    "name": "sensel-monorepo",
+    "private": true,
+    "scripts": {
+        "build": "pnpm -r build",
+        "publish-packages": "pnpm build && pnpm -r publish --access public",
+        "publish-cli": "pnpm --filter @sensel/cli publish --access public",
+        "publish-ui": "pnpm build && pnpm --filter @sensel/ui publish --access public"
+    }
+}
