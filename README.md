@@ -35,6 +35,10 @@ A beautiful, accessible component/action library for Svelte 5, with a powerful C
 npm install @sensel/ui
 ```
 
+```bash
+npm install @sensel/motion
+```
+
 ### Option 2: CLI + Individual Components
 
 1. Initialize a new project:
