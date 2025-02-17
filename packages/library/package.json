@@ -65,7 +65,6 @@
         "vite": "^5.4.11"
     },
     "dependencies": {
-        "@sensel/motion": "^0.0.2",
         "runed": "^0.23.1"
     }
 }
