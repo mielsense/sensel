@@ -14,8 +14,14 @@
 
 A beautiful, accessible component/action library for Svelte 5, with a powerful CLI for seamless integration.
 
+<div align="center">
+  <img src="https://i.ibb.co/YBD5JjK5/Svelte.png" alt="Svelte Logo" width="350">
+  <img src="https://i.ibb.co/zhS35pYb/Type-Script-Icon.png" alt="TypeScript Logo" width="350">
+</div>
+
 > [!NOTE]
 > Documentation available soon at: [Not available yet]()
+
 
 ## 🌟 Features
 
@@ -26,6 +32,9 @@ A beautiful, accessible component/action library for Svelte 5, with a powerful C
 - 🎯 Type-safe with TypeScript
 - 🎭 Style variants with tailwind-variants
 - 🎨 Tailwind CSS styling
+- 🍊 Animated icons imporation via cli
+- 💜 Motion.dev wrapper 
+
 
 ## 📦 Installation
 
@@ -52,11 +61,14 @@ npm install
 ```bash
 npx @sensel/cli add button
 npx @sensel/cli add card
+npx @sensel/cli icon user
 ```
 
-3. Remove components when not needed:
+3. Remove components/actions/icons when not needed:
 ```bash
 npx @sensel/cli remove button
+npx @sensel/cli remove pixelate
+npx @sensel/cli remove user
 ```
 
 ## 🎨 Components
@@ -71,13 +83,25 @@ Each component can be installed individually using the CLI:
 sensel add <item-name>
 ```
 
+## 🍊 Icons
+
+The animated icons come from [ji3sr/icons](https://github.com/jis3r/icons), all credits given to the original authors.
+
+## 💜 Motion wrapper
+
+This is a svelte wrapper around the [motion](https://motion.dev) library !
+
+
+
+
 ## 🛠️ CLI Commands
 
 | Command | Description |
 |---------|-------------|
 | `npx @sensel/cli init <project-name>` | Initialize a new project using the template |
-| `npx @sensel/cli add <item-name>` | Add a component to your project |
-| `npx @sensel/cli remove <item-name>` | Remove a component from your project |
+| `npx @sensel/cli add <item-name>` | Add a component/action to your project |
+| `npx @sensel/cli icon <icon-name>` | Add an icon to your project |
+| `npx @sensel/cli remove <item-name/icon-name>` | Remove a component from your project |
 
 ## 📝 License
 
@@ -89,7 +113,9 @@ Currently not open for contributions.
 
 ## 🙏 Acknowledgments
 
-This project builds upon [shadcn-svelte](https://github.com/huntabyte/shadcn-svelte) for its base components.
+This project builds upon [shadcn-svelte](https://github.com/huntabyte/shadcn-svelte) for its base components.<br>
+This project uses [ji3sr/icons](https://github.com/jis3r/icons) for all its animated icons.<br>
+This project provides a wrapper around the awsome [motion](https://motion.dev) library.
 
 ---
 
