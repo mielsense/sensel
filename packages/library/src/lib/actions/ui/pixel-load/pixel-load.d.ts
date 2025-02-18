@@ -1,6 +1,6 @@
 import type { Action } from 'svelte/action';
 
-export interface PixelOptions {
+export interface PixelLoadOptions {
     // initial pixel factor (default: 1)
     initialFactor?: number;
     // animation duration per step in ms (default: 80)
@@ -11,16 +11,16 @@ export interface PixelOptions {
     threshold?: number;
 }
 
-export interface PixelParameters {
+export interface PixelLoadParameters {
     // dom node to apply the action to
     node: HTMLElement;
     // (optional) action parameters
-    parameters?: PixelOptions;
+    parameters?: PixelLoadOptions;
 }
 
-export type PixelAction = Action<HTMLElement, PixelOptions>;
-export type PixelActionAttributes = {
+export type PixelLoadAction = Action<HTMLElement, PixelLoadOptions>;
+export type PixelLoadActionAttributes = {
     use: {
-        pixel: PixelParameters['parameters'];
+        pixel: PixelLoadParameters['parameters'];
     };
 };

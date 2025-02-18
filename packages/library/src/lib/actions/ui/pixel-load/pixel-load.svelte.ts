@@ -1,8 +1,8 @@
 import { useIntersectionObserver } from 'runed';
 import type { Action } from 'svelte/action';
-import type { PixelOptions } from './pixel.js';
+import type { PixelLoadOptions } from './pixel-load.js';
 
-interface PixelState {
+interface PixelLoadState {
     canvas: HTMLCanvasElement | null;
     ctx: CanvasRenderingContext2D | null;
     img: HTMLImageElement | null;
@@ -14,10 +14,10 @@ interface PixelState {
 
 const DEFAULT_PIXEL_FACTORS = [1, 2, 3, 4, 5, 8, 10, 15, 100];
 
-export const pixel: Action<HTMLElement, PixelOptions | undefined> = (node, options = {}) => {
+export const pixel: Action<HTMLElement, PixelLoadOptions | undefined> = (node, options = {}) => {
     const { stepDuration = 80, initialDelay = 300, threshold = 0.1, initialFactor = 1 } = options;
 
-    let state = $state<PixelState>({
+    let state = $state<PixelLoadState>({
         canvas: null,
         ctx: null,
         img: null,
@@ -152,7 +152,7 @@ export const pixel: Action<HTMLElement, PixelOptions | undefined> = (node, optio
             state.observer?.stop();
             state.canvas?.remove();
         },
-        update(newOptions: PixelOptions = {}) {
+        update(newOptions: PixelLoadOptions = {}) {
             // Update options if they change
             const { threshold: newThreshold = threshold, initialFactor: newInitialFactor = initialFactor } = newOptions;
 

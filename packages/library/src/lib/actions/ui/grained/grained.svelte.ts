@@ -1,5 +1,5 @@
 import type { Action } from 'svelte/action';
-import type { GrainedOptions } from './grained';
+import type { GrainedOptions } from './grained.js';
 
 const grained = (function () {
   function grained(ele: HTMLElement | string, opt: any) {
@@ -159,12 +159,10 @@ const grained = (function () {
   return grained;
 })();
 
-// Export a Svelte action
 export const grainedAction: Action<HTMLElement, GrainedOptions | undefined> = (
   node: HTMLElement,
   options: GrainedOptions = {},
 ) => {
-  // Ensure the element has an ID
   if (!node.id) {
     node.id = 'grained-' + Math.random().toString(36).substr(2, 9);
   }
@@ -172,15 +170,18 @@ export const grainedAction: Action<HTMLElement, GrainedOptions | undefined> = (
   // Initialize grained
   grained(node, options);
 
-  return {
-    destroy() {
-      // Cleanup
-      const styleElement = document.getElementById(
-        'grained-animation-' + node.id,
-      );
-      if (styleElement) {
-        styleElement.parentElement?.removeChild(styleElement);
-      }
-    },
-    update(newOptions: GrainedOptions = {}) {
-      grained(node, newOptions);
+    return {
+        destroy() {
+            // Cleanup
+            const styleElement = document.getElementById(
+                'grained-animation-' + node.id,
+            );
+            if (styleElement) {
+                styleElement.parentElement?.removeChild(styleElement);
+            }
+        },
+        update(newOptions: GrainedOptions = {}) {
+            grained(node, newOptions);
+        }
+    }
+}
