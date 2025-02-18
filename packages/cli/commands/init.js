@@ -2,13 +2,8 @@ import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import ora from "ora";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import inquirer from "inquirer";
 import { execSync } from "child_process";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 function convertAliasPath(aliasPath) {
     return aliasPath.replace(/^\$lib/, "./src/lib");
@@ -85,13 +80,18 @@ export async function initProject(projectName) {
                 message: `${chalk.yellow("🚀")} Where do you want to install actions? (e.g., $lib/actions/ui)`,
                 default: "$lib/actions/ui",
             },
+            {
+                type: "input",
+                name: "iconsAlias",
+                message: `${chalk.yellow("🎨")} Where do you want to install icons? (e.g., $lib/icons/animated)`,
+                default: "$lib/icons/animated",
+            },
         ]);
 
         spinner.start();
         spinner.text = `${chalk.cyan("⚙️")} Finalizing setup...`;
         await sleep(500);
 
-        // Create config and directories
         const config = {
             style: "default",
             tailwind: {
@@ -104,6 +104,7 @@ export async function initProject(projectName) {
                 ui: "$lib/components/ui",
                 hooks: "$lib/hooks",
                 actions: answers.actionsAlias,
+                icons: answers.iconsAlias,
             },
             typescript: true,
         };
@@ -123,6 +124,9 @@ export async function initProject(projectName) {
                 destinationDir,
                 convertAliasPath(answers.actionsAlias),
             ),
+        );
+        await fs.ensureDir(
+            path.resolve(destinationDir, convertAliasPath(answers.iconsAlias)),
         );
 
         // Install dependencies

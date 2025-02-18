@@ -3,6 +3,7 @@ import { program } from "commander";
 import { addComponent } from "./commands/add.js";
 import { removeComponent } from "./commands/remove.js";
 import { initProject } from "./commands/init.js";
+import { addIcon } from "./commands/icon.js";
 import fs from "fs";
 
 let packageManager = "npm";
@@ -15,7 +16,7 @@ if (fs.existsSync("pnpm-lock.yaml")) {
 program
     .name("sensel")
     .description(
-        "A CLI to add, remove, and initialize components in your project",
+        "A CLI to add, remove, initialize components, and now icons in your project",
     )
     .version("0.0.1")
     .on("--help", () => {
@@ -25,6 +26,7 @@ program
 
     Example:
       ${packageManager === "pnpm" ? "pnpx" : packageManager === "bun" ? "bunx" : "npx"} sensel add <component name>
+      ${packageManager === "pnpm" ? "pnpx" : packageManager === "bun" ? "bunx" : "npx"} sensel icon <icon name>
     `);
     });
 
@@ -48,5 +50,11 @@ program
     )
     .description("Initializes a new project from a base template")
     .action(initProject);
+
+program
+    .command("icon")
+    .argument("<icon name>", "The name of the icon to add")
+    .description("Adds an animated icon (from 'jis3r/icons') to your project")
+    .action(addIcon);
 
 program.parse(process.argv);

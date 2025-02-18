@@ -31,7 +31,7 @@ export async function removeComponent(name) {
 
         const config = await getConfig();
 
-        spinner.text = `${chalk.cyan("🔍")} Locating component...`;
+        spinner.text = `${chalk.cyan("🔍")} Locating component/action/icon...`;
         await sleep(500);
 
         const componentDir = path.resolve(
@@ -44,14 +44,23 @@ export async function removeComponent(name) {
             convertAliasPath(config.aliases.actions),
             name,
         );
+        const iconDir = config.aliases.icons
+            ? path.resolve(
+                  process.cwd(),
+                  convertAliasPath(config.aliases.icons),
+                  name,
+              )
+            : null;
 
         let dirToRemove;
         if (fs.existsSync(componentDir)) {
             dirToRemove = componentDir;
         } else if (fs.existsSync(actionDir)) {
             dirToRemove = actionDir;
+        } else if (iconDir && fs.existsSync(iconDir)) {
+            dirToRemove = iconDir;
         } else {
-            throw new Error(`Component or action '${name}' not found`);
+            throw new Error(`Component, action, or icon '${name}' not found`);
         }
 
         spinner.text = `${chalk.cyan("🗑️")} Removing files...`;

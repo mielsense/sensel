@@ -3,8 +3,8 @@
     "author": {
         "name": "miel"
     },
-    "version": "0.0.3",
-    "description": "A CLI to initialize projects. Add/Remove components and actions and much more !",
+    "version": "0.0.4",
+    "description": "A CLI to initialize projects. Add/Remove components, actions and much more !",
     "bin": {
         "sensel": "cli.js"
     },

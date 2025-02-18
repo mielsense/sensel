@@ -1,10 +1,10 @@
 {
     "name": "@sensel/ui",
-    "description": "A component/action library for svelte 5",
+    "description": "A component/action and icon library for svelte 5",
     "author": {
         "name": "miel"
     },
-    "version": "0.0.3",
+    "version": "0.0.4",
     "scripts": {
         "dev": "vite dev",
         "build": "vite build && npm run prepack",
